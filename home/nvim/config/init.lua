@@ -1,3 +1,5 @@
+require("config.lazy")
+
 vim.g.mapleader = ' '
 vim.keymap.set('n', '<leader>c', '<cmd>noh<cr>')
 vim.keymap.set('n', '<leader>f', 'za')
@@ -55,11 +57,6 @@ vim.opt.foldnestmax = 10
 vim.opt.ruler = true
 vim.opt.so = 999
 
--- Extra Files
-vim.o.nobackup = true
-vim.o.nowb = true
-vim.o.noswapfile = true
-
 -- Sessions
 session_dir = '~/.config/nvim/sessions'
 vim.keymap.set('n', '<leader>ss', ':mks! ' .. session_dir .. '/*.vim<C-D><BS><BS><BS><BS><BS>')
@@ -90,5 +87,6 @@ vim.keymap.set('n', '<C-L>', '<C-W><C-L>')
 vim.keymap.set('n', '<leader>c', '<cmd>noh<cr>')
 
 vim.opt.foldmethod = 'expr'
-vim.o.nofoldenable = true
+
+vim.api.nvim_set_hl(0, 'ColorColumn', {bg='RED'})
 
