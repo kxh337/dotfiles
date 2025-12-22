@@ -1,41 +1,20 @@
 {
-  description = "My dotfiles";
+  description = "Home Manager configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
+    # Increment release branch for NixOS
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     home-manager = {
-      url = "github:nix-community/home-manager";
+      # Follow corresponding `release` branch from Home Manager
+      url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }:
-  let
-    system = "x86_64-linux";
-
-    mkHome = { username, homeDirectory }:
-      home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs {
-          inherit system;
-          config.allowUnfree = true;
-        };
-
-        modules = [
-          ./home/common.nix
-          {
-            home.username = username;
-            home.homeDirectory = homeDirectory;
-          }
-        ];
-      };
-  in
-  {
-    homeConfigurations = {
-      chromebook = mkHome {
-        username = "khitomi337";
-        homeDirectory = "/home/khitomi337/";
-      };
+  outputs = { nixpkgs, home-manager, ... }: {
+    homeConfigurations."chromebook" = home-manager.lib.homeManagerConfiguration {
+      pkgs = nixpkgs.legacyPackages.x86_64-linux;
+      modules = [ ./home/common.nix ];
     };
   };
 }
-
