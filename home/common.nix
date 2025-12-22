@@ -6,6 +6,19 @@
   home.homeDirectory = "/home/khitomi337";
 
   programs.home-manager.enable = true;
+  programs.git = {
+		enable = true;
+		aliases = {
+			st = "status";
+			br = "branch";
+			cm = "commit";
+			co = "checkout";
+		};
+	};
+
+  # TODO: Get ghostty to work
+  # Requires use of nixgl
+  #programs.ghostty.enable = true;
 
   nix = {
     package = pkgs.nix;
@@ -17,8 +30,8 @@
   ];
 
   home.packages = with pkgs; [
-    git
     curl
+    go
   ];
 }
 

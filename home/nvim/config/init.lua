@@ -16,10 +16,14 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 
 -- Tabbing
-vim.api.nvim_buf_set_option(0, 'tabstop', 4)
-vim.api.nvim_buf_set_option(0, 'softtabstop', 4)
-vim.api.nvim_buf_set_option(0, 'shiftwidth', 4)
-vim.api.nvim_buf_set_option(0, 'expandtab', true)
+vim.opt_local.tabstop = 4
+vim.opt_local.softtabstop = 4
+vim.opt_local.shiftwidth = 4
+vim.opt_local.expandtab = true
+
+vim.opt.colorcolumn = '121'
+vim.opt.textwidth = 120
+
 
 -- Smart spacing
 vim.opt.wrap = true
@@ -36,7 +40,7 @@ vim.opt.autoread = true
 
 -- Wild menu
 vim.opt.wildmenu = true
-vim.opt.wildignore = '*.o', '*.pyc'
+vim.opt.wildignore = '*.o, *.pyc'
 vim.opt.lazyredraw = true
 vim.opt.vb = nil
 
@@ -58,7 +62,7 @@ vim.opt.ruler = true
 vim.opt.so = 999
 
 -- Sessions
-session_dir = '~/.config/nvim/sessions'
+local session_dir = '~/.config/nvim/sessions'
 vim.keymap.set('n', '<leader>ss', ':mks! ' .. session_dir .. '/*.vim<C-D><BS><BS><BS><BS><BS>')
 vim.keymap.set('n', '<leader>sr', ':so ' .. session_dir .. '/*.vim<C-D><BS><BS><BS><BS><BS>')
 
@@ -90,3 +94,6 @@ vim.opt.foldmethod = 'expr'
 
 vim.api.nvim_set_hl(0, 'ColorColumn', {bg='RED'})
 
+-- Enable LSPs
+vim.lsp.enable('lua_ls')
+vim.lsp.enable('gopls')

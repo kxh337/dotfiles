@@ -4,3 +4,4 @@ vim.opt_local.shiftwidth = 2
 
 vim.opt.colorcolumn = '121'
 vim.opt.textwidth = 120
+
