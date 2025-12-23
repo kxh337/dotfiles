@@ -5,7 +5,32 @@
   home.username = "khitomi337";
   home.homeDirectory = "/home/khitomi337";
 
+  home.sessionVariables = {
+		EDITOR = "nvim";
+	};
+
+  home.sessionPath = [
+		"$HOME/go/bin"
+	];
+
+  home.packages = with pkgs; [
+    curl
+    go
+  ];
+
   programs.home-manager.enable = true;
+
+  programs.zsh = {
+		enable = true;
+		shellAliases = {
+			vi = "nvim";
+		};
+		oh-my-zsh = {
+			enable = true;
+			theme = "bureau";
+		};
+	};
+
   programs.git = {
 		enable = true;
 		aliases = {
@@ -15,6 +40,7 @@
 			co = "checkout";
 		};
 	};
+
 
   # TODO: Get ghostty to work
   # Requires use of nixgl
@@ -27,11 +53,6 @@
 
   imports = [
     ./nvim
-  ];
-
-  home.packages = with pkgs; [
-    curl
-    go
   ];
 }
 
