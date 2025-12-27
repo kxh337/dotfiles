@@ -97,3 +97,4 @@ vim.api.nvim_set_hl(0, 'ColorColumn', {bg='RED'})
 -- Enable LSPs
 vim.lsp.enable('lua_ls')
 vim.lsp.enable('gopls')
+vim.lsp.enable('nixd')

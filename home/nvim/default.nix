@@ -1,6 +1,11 @@
 { config, pkgs, ... }:
 
 {
+  fonts.fontconfig.enable = true;
+  home.packages = [
+    pkgs.nerd-fonts.mononoki
+  ];
+
   programs.neovim = {
     enable = true;
     defaultEditor = true;
@@ -9,10 +14,12 @@
     extraPackages = with pkgs; [
       ripgrep
       fd
+      tree-sitter
 
       lua-language-server
       gopls
       nil
+      nixd
       stylua
     ];
   };
