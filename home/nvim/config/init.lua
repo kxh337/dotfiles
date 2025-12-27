@@ -16,10 +16,10 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 
 -- Tabbing
-vim.opt_local.tabstop = 4
-vim.opt_local.softtabstop = 4
-vim.opt_local.shiftwidth = 4
-vim.opt_local.expandtab = true
+vim.opt_global.tabstop = 4
+vim.opt_global.softtabstop = 4
+vim.opt_global.shiftwidth = 4
+vim.opt_global.expandtab = true
 
 vim.opt.colorcolumn = '121'
 vim.opt.textwidth = 120
