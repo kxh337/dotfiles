@@ -14,7 +14,17 @@
   outputs = { nixpkgs, home-manager, ... }: {
     homeConfigurations."chromebook" = home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
-      modules = [ ./home/common.nix ];
+      modules = [
+        ./home/chromebook.nix
+        ./home/common.nix
+      ];
+    };
+    homeConfigurations."desktop" = home-manager.lib.homeManagerConfiguration {
+      pkgs = nixpkgs.legacyPackages.x86_64-linux;
+      modules = [
+        ./home/desktop.nix
+        ./home/common.nix
+      ];
     };
   };
 }

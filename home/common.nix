@@ -2,8 +2,6 @@
 
 {
   home.stateVersion = "25.05";
-  home.username = "khitomi337";
-  home.homeDirectory = "/home/khitomi337";
 
   home.sessionVariables = {
 		EDITOR = "nvim";
@@ -40,11 +38,6 @@
 			co = "checkout";
 		};
 	};
-
-
-  # TODO: Get ghostty to work
-  # Requires use of nixgl
-  #programs.ghostty.enable = true;
 
   nix = {
     package = pkgs.nix;
