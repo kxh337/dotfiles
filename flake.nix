@@ -1,8 +1,7 @@
 {
-  description = "Home Manager configuration";
+  description = "My Nix Infrastructure";
 
   inputs = {
-    # Increment release branch for NixOS
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     home-manager = {
       # Follow corresponding `release` branch from Home Manager
@@ -11,20 +10,33 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, ... }: {
-    homeConfigurations."chromebook" = home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages.x86_64-linux;
-      modules = [
-        ./home/chromebook.nix
-        ./home/common.nix
-      ];
+  outputs = { self, nixpkgs, home-manager, ... }:
+  let
+    system = "x86_64-linux";
+    pkgs = import nixpkgs { inherit system; };
+  in
+  {
+    homeConfigurations."chromebook" =
+      home-manager.lib.homeManagerConfiguration {
+        inherit system pkgs;
+        modules = [
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.users.kei = import ./users/kei;
+          }
+        ];
     };
-    homeConfigurations."desktop" = home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages.x86_64-linux;
-      modules = [
-        ./home/desktop.nix
-        ./home/common.nix
-      ];
+
+    nixosConfigurations."desktop" =
+      nixpkgs.lib.nixosSystem {
+        inherit system pkgs;
+        modules = [
+          ./machines/desktop
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.users.kei = import ./users/kei;
+          }
+        ];
     };
   };
 }
