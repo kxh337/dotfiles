@@ -6,7 +6,8 @@
 
 {
   imports = [ # Include the results of the hardware scan.
-    ./hardware-configuration.nix
+    ./hardware.nix
+    ../../modules/steam.nix
   ];
 
   # Bootloader.
@@ -102,7 +103,6 @@
   # services.xserver.libinput.enable = true;
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
-  nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -141,6 +141,15 @@
       wineWowPackages.waylandFull
       yarn
   ];
+
+  programs.zsh.enable = true;
+  # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.users.keih = {
+    isNormalUser = true;
+    description = "Kei Hitomi";
+    extraGroups = [ "networkmanager" "wheel" "docker"];
+    shell = pkgs.zsh;
+  };
 
   ## Docker
   virtualisation.docker.enable = true;

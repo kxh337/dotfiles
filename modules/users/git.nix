@@ -1,4 +1,4 @@
-{config, ...}
+{config, pkgs, ...}:
 
 {
   programs.git = {
@@ -8,6 +8,6 @@
       br = "branch";
       cm = "commit";
       co = "checkout";
-    }
+    };
   };
 }

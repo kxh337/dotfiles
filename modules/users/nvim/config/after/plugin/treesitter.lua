@@ -1,23 +1,6 @@
-require'nvim-treesitter'.setup {
-  -- Directory to install parsers and queries to (prepended to `runtimepath` to have priority)
-  install_dir = vim.fn.stdpath('data') .. '/site'
-}
-
-require'nvim-treesitter'.install {
-  'bash',
-  'c',
-  'cpp',
-  'cmake',
-  'go',
-  'gdscript',
-  'lua',
-  'make',
-  'markdown',
-  'nix',
-  'python',
-  'yaml',
-  'zig',
-  'zsh',
+require("nvim-treesitter").setup {
+	-- Directory to install parsers and queries to (prepended to `runtimepath` to have priority)
+	install_dir = vim.fn.stdpath('data') .. '/site'
 }
 
 vim.api.nvim_create_autocmd('FileType', {

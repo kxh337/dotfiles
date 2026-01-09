@@ -13,7 +13,12 @@
   outputs = { self, nixpkgs, home-manager, ... }:
   let
     system = "x86_64-linux";
-    pkgs = import nixpkgs { inherit system; };
+    pkgs = import nixpkgs {
+      inherit system;
+      config = {
+        allowUnfree = true;
+      };
+    };
   in
   {
     homeConfigurations."chromebook" =
@@ -22,7 +27,7 @@
         modules = [
           home-manager.nixosModules.home-manager
           {
-            home-manager.users.kei = import ./users/kei;
+            #home-manager.users.khitomi337 = import ./users/khitomi337;
           }
         ];
     };
@@ -34,7 +39,7 @@
           ./machines/desktop
           home-manager.nixosModules.home-manager
           {
-            home-manager.users.kei = import ./users/kei;
+            home-manager.users.keih = import ./users/keih;
           }
         ];
     };
