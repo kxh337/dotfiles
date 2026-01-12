@@ -4,7 +4,7 @@
   imports = [
     ../../modules/users/nvim
     ../../modules/users/git.nix
-    #../../modules/users/zsh.nix
+    ../../modules/users/fonts.nix
   ];
 
   programs.home-manager.enable = true;
