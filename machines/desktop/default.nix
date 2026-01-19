@@ -91,6 +91,8 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+    wireplumber.enable = true;
+
     # If you want to use JACK applications, uncomment this
     #jack.enable = true;
 
@@ -105,7 +107,7 @@
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # List packages installed in system profile. To search, run:
-  # $ nix search wget
+  # $ nix search wgetkj
   environment.systemPackages = with pkgs; [
       audacity
       cairo
@@ -137,10 +139,12 @@
       terminus-nerdfont
       transmission_4-qt
       unzip
+      webcord
       wget
       wineWowPackages.waylandFull
       yarn
   ];
+
 
   programs.zsh.enable = true;
   # Define a user account. Don't forget to set a password with ‘passwd’.

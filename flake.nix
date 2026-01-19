@@ -17,7 +17,11 @@
       inherit system;
       config = {
         allowUnfree = true;
+        permittedInsecurePackages = [
+          "electron-36.9.5" # TODO remove this when webcord is updated
+        ];
       };
+      
     };
   in
   {
@@ -32,8 +36,7 @@
         ];
     };
 
-    nixosConfigurations."desktop" =
-      nixpkgs.lib.nixosSystem {
+    nixosConfigurations."desktop" = nixpkgs.lib.nixosSystem {
         inherit system pkgs;
         modules = [
           ./machines/desktop
