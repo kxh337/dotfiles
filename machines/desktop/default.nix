@@ -138,6 +138,7 @@
       (python311.withPackages(ps: with ps; [pip]))
       pkg-config
       postgresql
+      qmk
       sbctl
       steam
       steam-run
