@@ -120,6 +120,7 @@
       discord
       docker
       docker-compose
+      dos2unix
       foot
       gcc
       # Raspberry Pi Pico installs
@@ -139,6 +140,7 @@
       pkg-config
       postgresql
       qmk
+      ripgrep
       sbctl
       steam
       steam-run
